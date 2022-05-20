@@ -1,17 +1,16 @@
 <div class="container-sm">
   <div class="card col-6 offset-3">
     <span class="card-header text-center">Codelabs overview</span>
-    <ul class="list-group list-group-flush">
+    <ul *ngFor="let codelab of codelabs | async" class="list-group list-group-flush">
       <li class="list-group-item">
         <div class="row">
-          <span class="col">Codelab 01</span>
-          <select class="col">
-            <option>test</option>
-          </select>
+          <span class="col">{{codelab.name}}</span>
+<!--          <select class="col">-->
+<!--            <option>test</option>-->
+<!--          </select>-->
+          <span class="col">{{codelab.progress}}</span>
         </div>
       </li>
-      <li class="list-group-item">A second item</li>
-      <li class="list-group-item">A third item</li>
     </ul>
   </div>
   <div class="row justify-content-end">
