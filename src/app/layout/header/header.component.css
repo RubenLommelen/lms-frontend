@@ -1,43 +1,51 @@
-.offcanvas-header{
-  background-color: #424348 ;
+.offcanvas-header {
+  background-color: #424348;
   color: white;
 }
 
-.header{
-  background-color: #424348 ;
+.header {
+  background-color: #424348;
   color: white;
   margin-bottom: 50px;
   padding: 15px;
 }
+
 .wrapper {
   overflow: hidden;
 }
 
 .element {
   display: inline-block;
-  width: 5%;
 }
 
-.nav-btn{
+.nav-btn {
   background-color: white;
-  color:#424348;
+  color: #424348;
   border-color: #00887b;
-  margin-top: 10px;
   margin-bottom: 10px;
-
 }
 
-.nav-btn:hover{
+.nav-btn:hover {
   background-color: #00887b;
 }
 
-.logo{
+.logo {
   width: 175px;
+  float: left;
+  margin-left: 10px;
+}
+
+nav {
+  display: flex;
+  float: end;
+  margin-top: 132px;
+
+
 
 
 }
-.test{
-  width: 90%;
-  padding-left: 39%;
+
+nav > a {
+  margin: 5px;
 }
 

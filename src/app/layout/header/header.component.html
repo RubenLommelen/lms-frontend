@@ -1,27 +1,18 @@
 <header class="header">
-  <ng-template #content let-offcanvas>
-    <div class="offcanvas-header">
-      <h4 class="offcanvas-title" id="offcanvas-basic-title">Evolve&Go</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="offcanvas.dismiss('Cross click')"></button>
-    </div>
-    <div class="offcanvas-body">
-      <form>
-        <div class="mb-3">
-          <a class="form-control btn nav-btn" href=''><i class="bi bi-house-door"></i> Home</a>
-          <a class="form-control btn nav-btn" href='login'><i class="bi bi-person"></i> Login</a>
-        </div>
-      </form>
-      <div class="text-end">
-        <button type="button" class="btn btn-outline-dark" (click)="offcanvas.close()">Close</button>
-      </div>
-    </div>
-  </ng-template>
 
-  <div class="wrapper">
-    <button class="btn btn-lg nav-btn element"  (click)="open(content)"><i class="bi bi-list"></i></button>
-    <div class="element test" >
+
+    <div class="element col-5">
       <a href=''><img class="logo" src="assets/images/logo.PNG" alt="logo"></a>
     </div>
+  <div class="element col-4 title" >
+    <h1>Evolve&Go</h1>
   </div>
+
+    <nav role="navigation" class="element col-3 justify-content-right" >
+      <a class="btn nav-btn" href='login'><i class="bi bi-person"></i> Login</a>
+      <a class="btn nav-btn" href='login'><i class="bi bi-card-checklist"></i> Codelabs</a>
+      <a class="btn nav-btn" href='login'><i class="bi bi-activity"></i> Progress</a>
+    </nav>
+
 
 </header>
