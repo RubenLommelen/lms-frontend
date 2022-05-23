@@ -1,6 +1,6 @@
 import {CodelabProgress} from "./CodelabProgress";
 
 export interface Codelab {
-  name: string;
+  codelabName: string;
   progress: CodelabProgress;
 }
