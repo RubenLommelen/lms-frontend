@@ -1,0 +1,51 @@
+.offcanvas-header {
+  background-color: #424348;
+  color: white;
+}
+
+.header {
+  background-color: #424348;
+  color: white;
+  margin-bottom: 50px;
+  padding: 15px;
+}
+
+.wrapper {
+  overflow: hidden;
+}
+
+.element {
+  display: inline-block;
+}
+
+.nav-btn {
+  background-color: white;
+  color: #424348;
+  border-color: #00887b;
+  margin-bottom: 10px;
+}
+
+.nav-btn:hover {
+  background-color: #00887b;
+}
+
+.logo {
+  width: 175px;
+  float: left;
+  margin-left: 10px;
+}
+
+nav {
+  display: flex;
+  float: end;
+  margin-top: 132px;
+
+
+
+
+}
+
+nav > a {
+  margin: 5px;
+}
+
