@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {NgbOffcanvas, OffcanvasDismissReasons} from "@ng-bootstrap/ng-bootstrap";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -10,7 +11,10 @@ export class HeaderComponent implements OnInit {
 
   closeResult = '';
 
-  constructor(private offcanvasService: NgbOffcanvas) {}
+
+
+  constructor(private offcanvasService: NgbOffcanvas, private _router: Router) {
+  }
 
   ngOnInit(): void {
   }
@@ -32,6 +36,13 @@ export class HeaderComponent implements OnInit {
       return `with: ${reason}`;
     }
   }
+
+
+  logout() {
+    window.sessionStorage.clear();
+    this._router.navigateByUrl('login');
+  }
+
 
 
 

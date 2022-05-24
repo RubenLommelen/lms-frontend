@@ -11,7 +11,7 @@ export class CodelabService {
 
   constructor(private http: HttpClient) {}
 
-  getCodelabsForStudent(id: string): Observable<Codelab[]> {
+  getCodelabsForStudent(id: string | null): Observable<Codelab[]> {
     return this.http.get<Codelab[]>(`${environment.backendUrl}/students/${id}/codelabs`);
   }
 }

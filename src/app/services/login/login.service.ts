@@ -21,7 +21,8 @@ export class LoginService {
   login(user: User): Observable<Token>{
     return this.http.post<Token>(this.backendUrl, user).pipe(
       tap(response => sessionStorage.setItem(this.TOKEN_KEY, response.token)),
-      tap(response => sessionStorage.setItem(this.USERNAME_KEY,response.username))
+      tap(response => sessionStorage.setItem(this.USERNAME_KEY,response.username)),
+      tap(response => sessionStorage.setItem(this.ID_KEY, response.id))
     );
   }
 
@@ -33,8 +34,8 @@ export class LoginService {
     return sessionStorage.getItem(this.USERNAME_KEY);
   }
 
-  getName(): Observable<void>{
-    return this.http.get<void>(this.backendUrl);
+  getId(){
+    return sessionStorage.getItem(this.ID_KEY);
   }
 
 }
