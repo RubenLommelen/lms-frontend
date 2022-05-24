@@ -5,9 +5,9 @@
       <li class="list-group-item">
         <div class="row">
           <span class="col">{{codelab.codelabName}}</span>
-<!--          <select class="col">-->
-<!--            <option>test</option>-->
-<!--          </select>-->
+          <select class="col">
+            <option *ngFor="let progress of codelabProgress" [value]="progress" [selected]="progress.toLowerCase() === codelab.progress.toLowerCase()">{{progress}}</option>
+          </select>
           <span class="col">{{codelab.progress}}</span>
         </div>
       </li>
