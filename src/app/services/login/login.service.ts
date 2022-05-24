@@ -12,6 +12,7 @@ export class LoginService {
   private backendUrl: string;
   private readonly TOKEN_KEY: string = 'token';
   private readonly USERNAME_KEY: string = 'username';
+  private readonly ID_KEY: string = 'id';
 
   constructor(private http: HttpClient) {
     this.backendUrl = `${environment.backendUrl}/login`;
