@@ -10,15 +10,16 @@ import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor";
-import {HomePageComponent} from './home-page/home-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CodelabOverviewComponent,
     LoginComponent,
-
-    HomePageComponent
+    HomePageComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

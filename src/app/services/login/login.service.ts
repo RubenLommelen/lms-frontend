@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, tap} from "rxjs";
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import { environment } from 'src/environments/environment';
+import {HttpClient} from "@angular/common/http";
+import {environment} from 'src/environments/environment';
 import {User} from "../../model/User";
 import {Token} from "../../model/Token";
 
@@ -11,6 +11,7 @@ import {Token} from "../../model/Token";
 export class LoginService {
   private backendUrl: string;
   private readonly TOKEN_KEY: string = 'token';
+  private readonly USERNAME_KEY: string = 'username';
 
   constructor(private http: HttpClient) {
     this.backendUrl = `${environment.backendUrl}/login`;
@@ -18,13 +19,19 @@ export class LoginService {
 
   login(user: User): Observable<Token>{
     return this.http.post<Token>(this.backendUrl, user).pipe(
-      tap(response => sessionStorage.setItem(this.TOKEN_KEY, response.token))
+      tap(response => sessionStorage.setItem(this.TOKEN_KEY, response.token)),
+      tap(response => sessionStorage.setItem(this.USERNAME_KEY,response.username))
     );
   }
 
   getToken() {
     return sessionStorage.getItem(this.TOKEN_KEY);
   }
+
+  getUsername(){
+    return sessionStorage.getItem(this.USERNAME_KEY);
+  }
+
   getName(): Observable<void>{
     return this.http.get<void>(this.backendUrl);
   }
