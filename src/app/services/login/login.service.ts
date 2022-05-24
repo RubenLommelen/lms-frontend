@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable, tap} from "rxjs";
-import {HttpClient, HttpResponse} from "@angular/common/http";
-import { environment } from 'src/environments/environment';
+import {HttpClient} from "@angular/common/http";
+import {environment} from 'src/environments/environment';
 import {User} from "../../model/User";
 import {Token} from "../../model/Token";
 

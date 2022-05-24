@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from "./layout/layout.module";
-import { LoginComponent } from './login/login.component';
+import {CodelabOverviewComponent} from './codelab-overview/codelab-overview.component';
+import {LoginComponent} from './login/login.component';
 import {ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor";
@@ -15,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     AppComponent,
+    CodelabOverviewComponent,
     LoginComponent,
     HomePageComponent,
     ProfileComponent
