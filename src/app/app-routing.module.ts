@@ -8,8 +8,8 @@ import {CodelabOverviewComponent} from "./codelab-overview/codelab-overview.comp
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'loginsucces', component:LoginSuccesComponent},
+  {path:'students/1/codelabs', component: CodelabOverviewComponent}, // replace the '1' with the :id and get student id based on logged in student
   {path:'', component:HomePageComponent},
-  {path:'students', component: CodelabOverviewComponent}
 ];
 
 
