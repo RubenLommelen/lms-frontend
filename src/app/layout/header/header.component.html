@@ -9,9 +9,11 @@
   </div>
 
     <nav role="navigation" class="element col-3 justify-content-right" >
-      <a class="btn nav-btn" href='login'><i class="bi bi-person"></i> Login</a>
-      <a class="btn nav-btn" href='login'><i class="bi bi-card-checklist"></i> Codelabs</a>
-      <a class="btn nav-btn" href='login'><i class="bi bi-activity"></i> Progress</a>
+      <a class="btn nav-btn" routerLink="login"  ><i class="bi bi-person"></i> Login</a>
+      <a class="btn nav-btn" routerLink="profile"  ><i class="bi bi-person"></i> profile</a>
+      <a class="btn nav-btn" routerLink="codelabs"><i class="bi bi-card-checklist"></i> Codelabs</a>
+      <a class="btn nav-btn" routerLink="login"><i class="bi bi-activity"></i> Progress</a>
+      <a class="btn logout btn-warning"  (click)="logout()"><i class="bi bi-box-arrow-right"></i> Logout</a>
     </nav>
 
 

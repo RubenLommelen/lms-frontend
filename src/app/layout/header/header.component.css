@@ -40,12 +40,20 @@ nav {
   float: end;
   margin-top: 132px;
 
-
-
-
 }
-
 nav > a {
   margin: 5px;
+}
+.logout{
+  background-color: #a90c14;
+  color: white;
+  border-color: #a90c14;
+  margin-bottom: 10px;
+}
+
+.logout:hover{
+  background-color: white;
+  color: #424348;
+
 }
 
