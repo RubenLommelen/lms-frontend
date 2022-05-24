@@ -27,11 +27,12 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   test() {
-    const codelabProgressDto = this.fb.group({
+    const codelab = this.fb.group({
       title: 'String',
-      progress: 'Done'
+      progress: 'DONE'
     })
-    this.codelabsProgressList.push(codelabProgressDto);
+    this.codelabsProgressList.push(codelab);
+    console.log(this.codelabOverviewForm.value);
     this.codelabService.saveCodelabsProgress(this.codelabOverviewForm.value);
   }
 
