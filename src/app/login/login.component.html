@@ -1,0 +1,19 @@
+<div class="col-4">
+  <p></p>
+</div>
+
+<div class="container col-4">
+
+  <form class="form-control" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h3>Login</h3>
+    <label class="form-label">Username</label>
+    <input class="form-control" type="text" formControlName="username" placeholder="name@mail.com">
+    <label class="form-label">Password</label>
+    <input class="form-control" type="password" formControlName="password" placeholder="****">
+    <label *ngIf="hasError" class="text-warning">Wrong username and/or password</label>
+    <button type="submit" class="btn btn-success form-control">Login</button>
+    <button class="btn btn-secondary form-control">Register</button>
+  </form>
+
+
+</div>
