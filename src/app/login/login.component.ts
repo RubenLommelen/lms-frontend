@@ -12,12 +12,7 @@ export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   hasError: boolean = false;
 
-
-
-
-
-
-  constructor(private fb: FormBuilder, private loginService: LoginService, private _router: Router) { }
+  constructor(private formBuilder: FormBuilder, private loginService: LoginService, private router: Router) { }
 
   ngOnInit(): void {
     this.myForm();
@@ -25,7 +20,7 @@ export class LoginComponent implements OnInit {
 
 
   myForm() {
-    this.loginForm = this.fb.group({
+    this.loginForm = this.formBuilder.group({
       email: '',
       password:  '',
     });
@@ -35,10 +30,10 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value)
       .subscribe({
         next:() =>{
-          this._router.navigateByUrl('/profile/'+this.loginService.getUsername());
+          this.router.navigateByUrl('/profile/'+this.loginService.getUsername()); //use id later for profile story
+
         },
-        error: (error) =>{
-          console.log(error);
+        error: () =>{
           this.hasError = true;
         }
       });
