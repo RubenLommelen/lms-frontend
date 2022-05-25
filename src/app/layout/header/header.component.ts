@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {NgbOffcanvas, OffcanvasDismissReasons} from "@ng-bootstrap/ng-bootstrap";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
+import {LoginService} from "../../services/login/login.service";
 
 @Component({
   selector: 'app-header',
@@ -10,13 +12,15 @@ import {Router} from "@angular/router";
 export class HeaderComponent implements OnInit {
 
   closeResult = '';
+  loggedInUser$!: Observable<string | null>;
 
 
-
-  constructor(private offcanvasService: NgbOffcanvas, private _router: Router) {
+  constructor(private offcanvasService: NgbOffcanvas, private _router: Router, private loginService: LoginService) {
   }
 
   ngOnInit(): void {
+    this.loggedInUser$ = this.loginService.loggedInUser$;
+    setTimeout(() => this.loginService.sendSignal(), 1);
   }
 
   open(content: any) {
@@ -39,11 +43,9 @@ export class HeaderComponent implements OnInit {
 
 
   logout() {
-    window.sessionStorage.clear();
+    this.loginService.logout();
     this._router.navigateByUrl('login');
   }
-
-
 
 
 }

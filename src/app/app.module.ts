@@ -12,6 +12,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor";
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ProfileComponent } from './profile/profile.component';
     CodelabOverviewComponent,
     LoginComponent,
     HomePageComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProgressionOverviewComponent
   ],
   imports: [
     BrowserModule,
