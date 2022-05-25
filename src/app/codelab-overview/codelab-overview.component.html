@@ -8,7 +8,6 @@
           <select class="col">
             <option *ngFor="let progress of codelabProgress" [value]="progress" [selected]="progress.toLowerCase() === codelab.progress.toLowerCase()">{{progress}}</option>
           </select>
-          <span class="col">{{codelab.progress}}</span>
         </div>
       </li>
     </ul>
