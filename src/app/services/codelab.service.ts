@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {environment} from "../../environments/environment";
 import {Codelab} from "../models/Codelab";
+import {ProgressOverview} from "../models/ProgressOverview";
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class CodelabService {
 
   getCodelabsForStudent(id: string | null): Observable<Codelab[]> {
     return this.http.get<Codelab[]>(`${environment.backendUrl}/students/${id}/codelabs`);
+  }
+
+  getProgressOverview(): Observable<ProgressOverview[]> {
+    return this.http.get<ProgressOverview[]>(`${environment.backendUrl}/progress`);
   }
 }
