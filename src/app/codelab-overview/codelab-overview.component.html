@@ -1,20 +1,26 @@
 <div class="container-sm">
-  <div class="card col-6 offset-3">
-    <span class="card-header text-center">Codelabs overview</span>
-    <ul *ngFor="let codelab of codelabs | async" class="list-group list-group-flush">
-      <li class="list-group-item">
-        <div class="row">
-          <span class="col">{{codelab.codelabName}}</span>
-          <select class="col">
-            <option *ngFor="let progress of codelabProgress" [value]="progress" [selected]="progress.toLowerCase() === codelab.progress.toLowerCase()">{{progress}}</option>
-          </select>
-          <span class="col">{{codelab.progress}}</span>
-        </div>
-      </li>
-    </ul>
-  </div>
-  <div class="row justify-content-end">
-    <button type="submit" class="btn btn-success col-auto offset-md-6">Save</button>
-  </div>
+  <form [formGroup]="codelabOverviewForm">
+    <div class="card col-6 offset-3">
+      <span class="card-header text-center">Codelabs overview</span>
+      <div [formArrayName]="codelabsProgressList">
+        <ul *ngFor="let codelab of codelabs | async" class="list-group list-group-flush">
+          <div [formGroup]="codelab">
+            <li class="list-group-item">
+              <div class="row">
+                <span class="col">{{codelab.codelabName}}</span>
+                <select class="col">
+                  <option *ngFor="let progress of codelabProgress" [value]="progress"
+                          [selected]="progress.toLowerCase() === codelab.progress.toLowerCase()">{{progress}}</option>
+                </select>
 
+              </div>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </div>
+    <div class="row justify-content-end">
+      <button (click)="test()" type="submit" class="btn btn-success col-auto offset-md-6">Save</button>
+    </div>
+  </form>
 </div>
