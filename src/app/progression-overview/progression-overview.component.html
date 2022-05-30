@@ -1,6 +1,15 @@
 <div class="row">
   <div *ngFor="let progressOverview of progressOverviewList$ | async" class="col-4">
-    <h3>{{progressOverview.studentName}}</h3>
-    <p><ngb-progressbar  [value]="progressOverview.numberOfCompletedCodelabs" [max]="progressOverview.totalNumberOfCodelabs"><i>{{progressOverview.numberOfCompletedCodelabs}}/{{progressOverview.totalNumberOfCodelabs}}</i></ngb-progressbar></p>
+    <div class="col-10 offset-1">
+      <div class="row d-flex align-items-end ">
+        <h3 class="col">{{progressOverview.studentName}}</h3>
+        <h6 class="col text-end">{{progressOverview.numberOfCompletedCodelabs}}/{{progressOverview.totalNumberOfCodelabs}}</h6>
+      </div>
+      <p>
+        <ngb-progressbar [value]="progressOverview.numberOfCompletedCodelabs" [max]="progressOverview.totalNumberOfCodelabs">
+          <i>{{progressOverview.numberOfCompletedCodelabs}}/{{progressOverview.totalNumberOfCodelabs}}</i>
+        </ngb-progressbar>
+      </p>
+    </div>
   </div>
 </div>
