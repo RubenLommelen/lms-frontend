@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  backendUrl: 'https://lms-evolveandgo.herokuapp.com'
+
 };
