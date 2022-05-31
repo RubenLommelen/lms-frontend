@@ -10,8 +10,8 @@ import {ProgressOverview} from "../models/ProgressOverview";
 })
 export class ProgressionOverviewComponent implements OnInit {
   // amountOfCodeLabs: number = 10;
-  amountOfCompletedCodelabs: number = 5;
-  start: number = 0;
+  // amountOfCompletedCodelabs: number = 5;
+  // start: number = 0;
 
   progressOverviewList$!: Observable<ProgressOverview[]>;
 
