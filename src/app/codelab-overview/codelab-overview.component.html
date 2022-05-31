@@ -16,10 +16,13 @@
           </li>
         </ul>
       </div>
-      <div class="col">
+      <div class="pt-3 col">
         <button type="submit" class="btn btn-success col-auto offset-md-6" >Save</button><br><br>
         <ngb-alert *ngIf="message">
           Progress saved successfully!
+        </ngb-alert>
+        <ngb-alert type="danger" *ngIf="error">
+          Failed to save progress!!
         </ngb-alert>
       </div>
     </form>

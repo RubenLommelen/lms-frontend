@@ -19,6 +19,7 @@ export class CodelabOverviewComponent implements OnInit {
     codelabs: this.fb.array([])
   });
   message: boolean = false;
+  error: boolean = false;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
@@ -42,8 +43,16 @@ export class CodelabOverviewComponent implements OnInit {
       .subscribe({
         next:() =>{
           this.message=true;
+          setTimeout(()=>{
+            //code goes here
+            this.message=false
+          }, 7000);
         },
-        error: () =>{
+        error: () =>{this.error=true;
+          setTimeout(()=>{
+            //code goes here
+            this.error=false
+          }, 7000);
         }
       });
     console.log(this.progressForm.value);
