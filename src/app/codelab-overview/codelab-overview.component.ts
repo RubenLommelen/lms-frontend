@@ -11,32 +11,34 @@ import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
   templateUrl: './codelab-overview.component.html',
   styleUrls: ['./codelab-overview.component.css']
 })
+
 export class CodelabOverviewComponent implements OnInit {
-  codelabs!: Observable<Codelab[]>;
-  codelabProgress: string[] = Object.values(CodelabProgress);
-  codelabOverviewForm: FormGroup = this.fb.group({
-    id: window.sessionStorage.getItem('id'),
-    codelabsProgressList: this.fb.array([])
-  })
+  CodelabProgress = CodelabProgress;
+  Object = Object;
+  progressForm = this.fb.group({
+    codelabs: this.fb.array([])
+  });
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
   }
 
   ngOnInit(): void {
-    this.codelabs = this.codelabService.getCodelabsForStudent(this.loginService.getId());
+    this.codelabService.getCodelabsForStudent(this.loginService.getId()).subscribe(
+      codelabs => {
+        codelabs.forEach(codelab => codelab.studentId = this.loginService.getId());
+        codelabs.forEach(codelab => this.codelabs.push(this.fb.group(codelab)))
+      }
+    );
   }
 
-  test() {
-    const codelab = this.fb.group({
-      title: 'String',
-      progress: 'DONE'
-    })
-    this.codelabsProgressList.push(codelab);
-    console.log(this.codelabOverviewForm.value);
-    this.codelabService.saveCodelabsProgress(this.codelabOverviewForm.value);
+  get codelabs(): FormArray {
+    return this.progressForm.get('codelabs') as FormArray;
   }
 
-  get codelabsProgressList() {
-    return this.codelabOverviewForm.controls["codelabsProgressList"] as FormArray;
+  onSubmit() {
+    this.codelabService.saveCodelabsProgress(this.progressForm.value);
+    console.log(this.progressForm.value);
   }
+
+
 }

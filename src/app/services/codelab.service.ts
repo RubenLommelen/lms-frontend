@@ -15,7 +15,7 @@ export class CodelabService {
     return this.http.get<Codelab[]>(`${environment.backendUrl}/students/${id}/codelabs`);
   }
 
-  saveCodelabsProgress(value: any) {
-    this.http.post<void>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabs`, value).subscribe();
+  saveCodelabsProgress({codelabs}: any) {
+    this.http.post<void>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabs`, codelabs).subscribe();
   }
 }
