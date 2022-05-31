@@ -18,6 +18,8 @@ export class CodelabOverviewComponent implements OnInit {
   progressForm = this.fb.group({
     codelabs: this.fb.array([])
   });
+  message: boolean = false;
+
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
   }
@@ -36,8 +38,16 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   onSubmit() {
-    this.codelabService.saveCodelabsProgress(this.progressForm.value);
+    this.codelabService.saveCodelabsProgress(this.progressForm.value)
+      .subscribe({
+        next:() =>{
+          this.message=true;
+        },
+        error: () =>{
+        }
+      });
     console.log(this.progressForm.value);
+
   }
 
 

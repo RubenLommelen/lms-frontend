@@ -1,6 +1,7 @@
 <div class="container-sm">
   <div class="card col-6 offset-3">
     <span class="card-header text-center">Codelabs overview</span>
+
     <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
       <div formArrayName="codelabs">
         <ul class="list-group list-group-flush">
@@ -16,7 +17,10 @@
         </ul>
       </div>
       <div class="col">
-        <button type="submit" class="btn btn-success col-auto offset-md-6">Save</button>
+        <button type="submit" class="btn btn-success col-auto offset-md-6" >Save</button><br><br>
+        <ngb-alert *ngIf="message">
+          Progress saved successfully!
+        </ngb-alert>
       </div>
     </form>
   </div>
