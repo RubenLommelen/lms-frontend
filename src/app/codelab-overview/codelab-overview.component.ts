@@ -1,7 +1,5 @@
 import {Component, OnInit} from '@angular/core';
 import {CodelabService} from "../services/codelab.service";
-import {Observable} from "rxjs";
-import {Codelab} from "../models/Codelab";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
@@ -19,6 +17,7 @@ export class CodelabOverviewComponent implements OnInit {
     codelabs: this.fb.array([])
   });
   message: boolean = false;
+  error: boolean = false;
   userType!: string | null;
 
 
@@ -44,8 +43,16 @@ export class CodelabOverviewComponent implements OnInit {
       .subscribe({
         next:() =>{
           this.message=true;
+          setTimeout(()=>{
+            //code goes here
+            this.message=false
+          }, 5000);
         },
-        error: () =>{
+        error: () =>{this.error=true;
+          setTimeout(()=>{
+            //code goes here
+            this.error=false
+          }, 5000);
         }
       });
     console.log(this.progressForm.value);
