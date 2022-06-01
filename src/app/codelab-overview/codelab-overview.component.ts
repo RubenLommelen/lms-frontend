@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CodelabService} from "../services/codelab.service";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-codelab-overview',
