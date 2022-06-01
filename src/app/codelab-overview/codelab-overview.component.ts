@@ -41,17 +41,18 @@ export class CodelabOverviewComponent implements OnInit {
   onSubmit() {
     this.codelabService.saveCodelabsProgress(this.progressForm.value)
       .subscribe({
-        next:() =>{
-          this.message=true;
-          setTimeout(()=>{
+        next: () => {
+          this.message = true;
+          setTimeout(() => {
             //code goes here
-            this.message=false
+            this.message = false
           }, 5000);
         },
-        error: () =>{this.error=true;
-          setTimeout(()=>{
+        error: () => {
+          this.error = true;
+          setTimeout(() => {
             //code goes here
-            this.error=false
+            this.error = false
           }, 5000);
         }
       });

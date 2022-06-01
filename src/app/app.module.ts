@@ -13,6 +13,7 @@ import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ProgressionOverviewComponent } from './progression-overview/progression
     LoginComponent,
     HomePageComponent,
     ProfileComponent,
-    ProgressionOverviewComponent
+    ProgressionOverviewComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
