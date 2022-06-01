@@ -1,10 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {CodelabService} from "../services/codelab.service";
-import {Observable} from "rxjs";
-import {Codelab} from "../models/Codelab";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
-import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {FormArray, FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -46,13 +44,13 @@ export class CodelabOverviewComponent implements OnInit {
           setTimeout(()=>{
             //code goes here
             this.message=false
-          }, 7000);
+          }, 5000);
         },
         error: () =>{this.error=true;
           setTimeout(()=>{
             //code goes here
             this.error=false
-          }, 7000);
+          }, 5000);
         }
       });
     console.log(this.progressForm.value);
