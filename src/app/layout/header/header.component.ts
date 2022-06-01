@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.loggedInUser$ = this.loginService.loggedInUser$;
     setTimeout(() => this.loginService.sendSignal(), 1);
   }
@@ -39,6 +40,10 @@ export class HeaderComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  get userType() {
+    return this.loginService.getUserType();
   }
 
 

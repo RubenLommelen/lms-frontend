@@ -19,6 +19,7 @@ export class CodelabOverviewComponent implements OnInit {
     codelabs: this.fb.array([])
   });
   message: boolean = false;
+  userType!: string | null;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
@@ -31,6 +32,7 @@ export class CodelabOverviewComponent implements OnInit {
         codelabs.forEach(codelab => this.codelabs.push(this.fb.group(codelab)))
       }
     );
+    this.userType = this.loginService.getUserType();
   }
 
   get codelabs(): FormArray {
