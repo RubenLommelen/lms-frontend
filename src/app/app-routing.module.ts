@@ -9,7 +9,7 @@ import {ProgressionOverviewComponent} from "./progression-overview/progression-o
 const routes: Routes = [
   {path:'login', component:LoginComponent},
   {path:'codelabs', component: CodelabOverviewComponent}, // replace the '1' with the :id and get student id based on logged in student
-  {path:'profile/:username', component:ProfileComponent},
+  {path:'profile', component:ProfileComponent},
   {path:'', component:HomePageComponent},
   {path:'progression', component:ProgressionOverviewComponent},
 
