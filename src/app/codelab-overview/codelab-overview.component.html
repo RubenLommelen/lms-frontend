@@ -1,6 +1,8 @@
-<div class="container-sm">
-  <div class="card col-6 offset-3">
-    <span class="card-header text-center">Codelabs overview</span>
+
+<div *ngIf="userType == 'STUDENT'">
+  <div class="container-sm">
+    <div class="card col-6 offset-3">
+      <span class="card-header text-center">Codelabs overview</span>
 
     <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
       <div formArrayName="codelabs">
@@ -28,3 +30,8 @@
     </form>
   </div>
 </div>
+<div *ngIf="userType != 'STUDENT'" >
+
+  <img src="assets/images/jackson.jpg" style="width: 50%" class="offset-3">
+</div>
+

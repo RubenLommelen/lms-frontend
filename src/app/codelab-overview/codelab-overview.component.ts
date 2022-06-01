@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {CodelabService} from "../services/codelab.service";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
-import {FormArray, FormBuilder} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -18,6 +18,7 @@ export class CodelabOverviewComponent implements OnInit {
   });
   message: boolean = false;
   error: boolean = false;
+  userType!: string | null;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
@@ -30,6 +31,7 @@ export class CodelabOverviewComponent implements OnInit {
         codelabs.forEach(codelab => this.codelabs.push(this.fb.group(codelab)))
       }
     );
+    this.userType = this.loginService.getUserType();
   }
 
   get codelabs(): FormArray {
