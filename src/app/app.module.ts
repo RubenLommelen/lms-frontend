@@ -11,8 +11,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor";
 import {HomePageComponent} from './home-page/home-page.component';
-import {ProfileComponent} from './profile/profile.component';
 import {ProgressionOverviewComponent} from './progression-overview/progression-overview.component';
+import {ProfileComponent} from "./profile/profile.component";
 
 
 @NgModule({
@@ -21,8 +21,8 @@ import {ProgressionOverviewComponent} from './progression-overview/progression-o
     CodelabOverviewComponent,
     LoginComponent,
     HomePageComponent,
-    ProfileComponent,
-    ProgressionOverviewComponent
+    ProgressionOverviewComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,
