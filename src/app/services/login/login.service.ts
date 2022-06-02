@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {Observable, Subject, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from 'src/environments/environment';
-import {User} from "../../model/User";
-import {Token} from "../../model/Token";
+import {User} from "../../models/User";
+import {Token} from "../../models/Token";
 
 @Injectable({
   providedIn: 'root'

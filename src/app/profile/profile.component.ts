@@ -1,6 +1,6 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {LoginService} from "../services/login/login.service";
-import {StudentService} from "../services/student.service";
+import {StudentService} from "../services/student/student.service";
 import {Subscription} from "rxjs";
 import {Student} from "../models/Student";
 import {ActivatedRoute} from "@angular/router";

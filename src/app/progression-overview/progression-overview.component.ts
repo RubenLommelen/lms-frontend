@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {interval, Observable, takeWhile} from "rxjs";
-import {CodelabService} from "../services/codelab.service";
+import {Observable} from "rxjs";
+import {CodelabService} from "../services/codelab/codelab.service";
 import {ProgressOverview} from "../models/ProgressOverview";
 import {LoginService} from "../services/login/login.service";
 
