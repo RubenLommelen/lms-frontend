@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
+import {FormBuilder} from "@angular/forms";
 
 @Component({
   selector: 'app-register',
@@ -8,9 +9,21 @@ import {Router} from "@angular/router";
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  registerForm = this.formBuilder.group({
+    email: '',
+    displayName: '',
+    password:  '',
+    repeatPassword:''
+  });
+
+
+  constructor(private formBuilder:FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
   }
 
+
+  onSubmit() {
+
+  }
 }
