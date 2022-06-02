@@ -1,37 +1,39 @@
-
 <div *ngIf="userType == 'STUDENT'">
   <div class="container-sm">
     <div class="card col-6 offset-3">
       <span class="card-header text-center">Codelabs overview</span>
 
-    <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
-      <div formArrayName="codelabs">
-        <ul class="list-group list-group-flush">
-          <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
-            <div class="row">
-              <span class="col">{{codelab.value.codelabName}}</span>
-              <select class="col" formControlName="progress">
-                <option *ngFor="let progress of Object.keys(CodelabProgress)"
-                        [value]="progress">{{CodelabProgress[progress]}}</option>
-              </select>
-            </div>
-          </li>
-        </ul>
-      </div>
-      <div class="pt-3 col">
-        <button type="submit" class="btn btn-success col-auto offset-md-6" >Save</button><br><br>
-        <ngb-alert *ngIf="message">
-          Progress saved successfully!
-        </ngb-alert>
-        <ngb-alert type="danger" *ngIf="error">
-          Failed to save progress!!
-        </ngb-alert>
-      </div>
-    </form>
+      <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
+        <div formArrayName="codelabs">
+          <ul class="list-group list-group-flush">
+            <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
+              <div class="row">
+                <span class="col">{{codelab.value.codelabName}}</span>
+                <select class="col" formControlName="progress">
+                  <option *ngFor="let progress of Object.keys(CodelabProgress)"
+                          [value]="progress">{{CodelabProgress[progress]}}</option>
+                </select>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="pt-3 col">
+          <button type="submit" class="btn btn-success col-auto offset-md-6">Save</button>
+          <br><br>
+          <ngb-alert *ngIf="message">
+            Progress saved successfully!
+          </ngb-alert>
+          <ngb-alert type="danger" *ngIf="error">
+            Failed to save progress!!
+          </ngb-alert>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
-<div *ngIf="userType != 'STUDENT'" >
+<div *ngIf="userType != 'STUDENT'">
 
-  <img src="assets/images/jackson.jpg" style="width: 50%" class="offset-3">
+  <img alt="Unauthorized by Samuel L. Jackson" src="assets/images/jackson.jpg" style="width: 50%" class="offset-3">
 </div>
+
 
