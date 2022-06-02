@@ -19,6 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
 
+
   myForm() {
     this.loginForm = this.formBuilder.group({
       email: '',
@@ -30,8 +31,8 @@ export class LoginComponent implements OnInit {
     this.loginService.login(this.loginForm.value)
       .subscribe({
         next:() =>{
-          this.router.navigateByUrl('/profile'); //use id later for profile story
-
+          // this.router.navigateByUrl('/profile'); //use id later for profile story
+          this.router.navigate(['profile'], {queryParams: { loggedIn: 'true' } }); //added this
         },
         error: () =>{
           this.hasError = true;

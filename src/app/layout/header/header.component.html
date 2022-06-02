@@ -2,7 +2,7 @@
 
 
   <div class="element col-5">
-    <a href=''><img class="logo" src="assets/images/logo.PNG" alt="logo"></a>
+    <a routerLink=''><img class="logo" src="assets/images/logo.PNG" alt="logo"></a>
   </div>
   <div class="element col-3 title">
     <h1>Evolve&Go</h1>
@@ -11,6 +11,7 @@
   <nav role="navigation" class="element col-3 justify-content-right">
 
       <span *ngIf="loggedInUser$ | async as loggedInUser; else notLoggedIn">
+
         <a class="btn nav-btn" routerLink="profile"><i class="bi bi-person"></i> {{loggedInUser}}</a>
 
         <span *ngIf="userType == 'STUDENT'">

@@ -17,4 +17,5 @@ export class StudentService {
     this.userType = window.sessionStorage.getItem('userType')!.toLowerCase();
     return this.http.get<Student>(`${environment.backendUrl}/${this.userType}s/${window.sessionStorage.getItem('id')}`);
   }
+
 }

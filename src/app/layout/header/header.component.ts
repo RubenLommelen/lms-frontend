@@ -13,16 +13,18 @@ export class HeaderComponent implements OnInit {
 
   closeResult = '';
   loggedInUser$!: Observable<string | null>;
+  message: boolean = true;
 
 
   constructor(private offcanvasService: NgbOffcanvas, private _router: Router, private loginService: LoginService) {
   }
 
   ngOnInit(): void {
-
     this.loggedInUser$ = this.loginService.loggedInUser$;
     setTimeout(() => this.loginService.sendSignal(), 1);
   }
+
+
 
   open(content: any) {
     this.offcanvasService.open(content, {ariaLabelledBy: 'offcanvas-basic-title'}).result.then((result) => {
@@ -51,6 +53,5 @@ export class HeaderComponent implements OnInit {
     this.loginService.logout();
     this._router.navigateByUrl('login');
   }
-
 
 }

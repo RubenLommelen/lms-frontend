@@ -11,7 +11,7 @@ const routes: Routes = [
   {path:'codelabs', component: CodelabOverviewComponent}, // replace the '1' with the :id and get student id based on logged in student
   {path:'profile', component:ProfileComponent},
   {path:'', component:HomePageComponent},
-  {path:'progression', component:ProgressionOverviewComponent},
+  {path:'progression', component:ProgressionOverviewComponent}
 
 ];
 

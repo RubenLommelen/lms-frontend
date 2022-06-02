@@ -1,4 +1,4 @@
-<h1>Welcome {{username}}, you have logged in succes(switch)fully</h1>
+<!--<h1>Welcome {{username}}, you have logged in succes(switch)fully</h1>-->
 
 <div class="container col-4 offset-4" style="border-style: solid;border-width: 1px;border-color: #424348; padding: 20px; border-radius: 10px">
 
@@ -8,4 +8,7 @@
     <input disabled class="form-control" type="text"  placeholder="{{student.displayName}}">
     <label class="form-label">Email</label>
     <input disabled class="form-control" type="text" placeholder="{{student.email}}">
+
 </div>
+
+<ngb-alert *ngIf="infoMessage.length > 0" class="alert col-4 offset-4">{{ infoMessage }}</ngb-alert>

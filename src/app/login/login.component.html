@@ -2,7 +2,7 @@
 
 <div class="container col-4 offset-4" style="border-style: solid;border-width: 1px;border-color: #424348; padding: 20px; border-radius: 10px">
 
-  <form class="" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <form  [formGroup]="loginForm" (ngSubmit)="onSubmit()">
     <h3>Login</h3>
     <label class="form-label">Email</label>
     <input class="form-control" type="text" formControlName="email" placeholder="name@mail.com">
@@ -12,5 +12,6 @@
     <button type="submit" class="btn btn-success form-control">Login</button>
   </form>
   <button class="btn btn-secondary form-control">Register</button>
+
 
 </div>
