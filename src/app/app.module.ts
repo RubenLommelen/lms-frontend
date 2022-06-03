@@ -9,11 +9,11 @@ import {CodelabOverviewComponent} from './codelab-overview/codelab-overview.comp
 import {LoginComponent} from './login/login.component';
 import {EmailValidator, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {HttpinterceptorInterceptor} from "./services/httpinterceptor.interceptor";
 import { HomePageComponent } from './home-page/home-page.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
 import { RegisterComponent } from './register/register.component';
+import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.interceptor";
 
 @NgModule({
   declarations: [
