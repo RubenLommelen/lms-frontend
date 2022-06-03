@@ -1,18 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfirmedValidator} from "../validators/confirmed.validator";
+import {RegisterService} from "../services/register/register.service";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit, OnDestroy {
 
   registerForm!: FormGroup;
+  registerSubscription!: Subscription;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private registerService: RegisterService) {
   }
+
 
   ngOnInit(): void {
     this.registerForm = this.formBuilder.group({
@@ -25,12 +29,14 @@ export class RegisterComponent implements OnInit {
     );
   }
 
+  ngOnDestroy(): void {
+    this.registerSubscription.unsubscribe()
+  }
+
 
   onSubmit() {
     if (this.registerForm.valid) {
-
-    } else {
-
+      this.registerSubscription = this.registerService.registerStudent(this.registerForm.value).subscribe();
     }
   }
 
