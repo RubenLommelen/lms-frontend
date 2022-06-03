@@ -11,8 +11,8 @@
     <input class="form-control" type="password" formControlName="password" placeholder="****">
     <label class="form-label">Repeat Password</label>
     <input class="form-control" type="password" formControlName="repeatPassword" placeholder="****">
-    <!--    <label  class="text-warning">Invalid credentials</label>-->
-    <button type="submit" class="btn btn-secondary form-control">Register</button>
+    <button *ngIf="this.registerForm.valid" type="submit" class="btn btn-secondary form-control">Register</button>
+    <button *ngIf="this.registerForm.invalid" type="button" class="btn btn-secondary form-control" disabled>Register</button>
   </form>
 
 
