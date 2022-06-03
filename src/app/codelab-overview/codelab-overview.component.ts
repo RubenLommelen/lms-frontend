@@ -24,7 +24,7 @@ export class CodelabOverviewComponent implements OnInit {
   codelabName!: any;
   codelabId!: any;
   codelabCommentForm!: FormGroup;
-
+  codelabComment!: any;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
@@ -66,15 +66,15 @@ export class CodelabOverviewComponent implements OnInit {
     console.log(this.progressForm.value);
   }
 
-  myForm() {
+  myForm(codelabComment: string) {
     this.codelabCommentForm = this.fb.group({
-      comment: '',
+      codelabComment: codelabComment,
       codelabId: this.codelabId,
       studentId: this.loginService.getId()
     });
   }
 
-  open(content: any, codelabName: any, codelabId: any) {
+  open(content: any, codelabName: any, codelabId: any, codelabComment: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -82,7 +82,9 @@ export class CodelabOverviewComponent implements OnInit {
     });
     this.codelabName = codelabName;
     this.codelabId = codelabId;
-    this.myForm();
+    this.codelabComment = codelabComment;
+    console.log(codelabComment)
+    this.myForm(codelabComment);
   }
 
   private getDismissReason(reason: any): string {
@@ -97,6 +99,13 @@ export class CodelabOverviewComponent implements OnInit {
 
 
   saveComment() {
-    console.log(this.codelabCommentForm.value);
+    this.codelabService.saveCodelabComment(this.codelabCommentForm.value).subscribe({
+      next: () => {
+        window.location.reload();
+      },
+      error: (error) => {
+
+      }
+    });
   }
 }

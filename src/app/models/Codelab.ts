@@ -5,5 +5,6 @@ export interface Codelab {
   progress: CodelabProgress;
   codelabId: number;
   studentId: string | null;
+  codelabComment: string;
 
 }
