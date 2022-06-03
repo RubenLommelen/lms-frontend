@@ -17,7 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   message: boolean = true;
   infoMessage = '';
 
-
+  
 
   constructor(private loginService: LoginService, private studentService: StudentService, private route: ActivatedRoute) {
   }
