@@ -4,6 +4,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import {AppRoutingModule} from "../app-routing.module";
+import {NgbAlertModule} from "@ng-bootstrap/ng-bootstrap";
+import {AppModule} from "../app.module";
 
 
 
@@ -18,7 +20,8 @@ import {AppRoutingModule} from "../app-routing.module";
     ],
     imports: [
         CommonModule,
-        AppRoutingModule
+        AppRoutingModule,
+        NgbAlertModule,
     ]
 })
 export class LayoutModule { }

@@ -33,12 +33,15 @@ import { RegisterComponent } from './register/register.component';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    LayoutModule
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorInterceptor, multi: true
     }
 
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

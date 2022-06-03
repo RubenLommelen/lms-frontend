@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {CodelabService} from "../services/codelab.service";
+import {CodelabService} from "../services/codelab/codelab.service";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
 import {FormArray, FormBuilder} from "@angular/forms";
