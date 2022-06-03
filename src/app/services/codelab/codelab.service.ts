@@ -25,7 +25,7 @@ export class CodelabService {
     return this.http.get<ProgressOverview[]>(`${environment.backendUrl}/progress`);
   }
 
-  saveCodelabComment(codelabComment: CodelabComment) {
-    return this.http.post<CodelabComment>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabcomments`, codelabComment);
+  saveCodelabComment(codelabComment: CodelabComment, codelabId: number) {
+    return this.http.post<CodelabComment>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabs/${codelabId}/comments`, codelabComment);
   }
 }

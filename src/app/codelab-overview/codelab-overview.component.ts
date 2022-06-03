@@ -99,7 +99,7 @@ export class CodelabOverviewComponent implements OnInit {
 
 
   saveComment() {
-    this.codelabService.saveCodelabComment(this.codelabCommentForm.value).subscribe({
+    this.codelabService.saveCodelabComment(this.codelabCommentForm.value, this.codelabId).subscribe({
       next: () => {
         window.location.reload();
       },
