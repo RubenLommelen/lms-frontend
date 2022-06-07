@@ -7,13 +7,13 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from "./layout/layout.module";
 import {CodelabOverviewComponent} from './codelab-overview/codelab-overview.component';
 import {LoginComponent} from './login/login.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {EmailValidator, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import { HomePageComponent } from './home-page/home-page.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
+import { RegisterComponent } from './register/register.component';
 import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.interceptor";
-import {HomePageComponent} from './home-page/home-page.component';
-import {ProgressionOverviewComponent} from './progression-overview/progression-overview.component';
-import {ProfileComponent} from "./profile/profile.component";
-
 
 @NgModule({
   declarations: [
@@ -21,13 +21,15 @@ import {ProfileComponent} from "./profile/profile.component";
     CodelabOverviewComponent,
     LoginComponent,
     HomePageComponent,
+    ProfileComponent,
     ProgressionOverviewComponent,
-    ProfileComponent
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
+    LayoutModule,
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
@@ -43,5 +45,4 @@ import {ProfileComponent} from "./profile/profile.component";
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

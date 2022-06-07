@@ -1,0 +1,26 @@
+<div class="container col-4 offset-4"
+     style="border-style: solid;border-width: 1px;border-color: #424348; padding: 20px; border-radius: 10px">
+
+  <form class="" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h3>Register</h3>
+    <label class="form-label">Email</label>
+    <input type="email" class="form-control" formControlName="email" placeholder="name@mail.com">
+    <label class="form-label">Display Name</label>
+    <input class="form-control" type="text" formControlName="displayName" placeholder="Display Name">
+    <label class="form-label">Password</label>
+    <input class="form-control" type="password" formControlName="password" placeholder="****">
+    <label class="form-label">Repeat Password</label>
+    <input class="form-control" type="password" formControlName="repeatPassword" placeholder="****">
+    <!--    <label  class="text-warning">Invalid credentials</label>-->
+    <button type="submit" class="btn btn-secondary form-control">Register</button>
+  </form>
+
+
+  <div *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)">
+    <div *ngIf="email.errors?.['required'] || displayName.errors?.['required'] || password.errors?.['required'] || repeatPassword.errors?.['required']">
+      All field are required
+    </div>
+  </div>
+
+
+</div>
