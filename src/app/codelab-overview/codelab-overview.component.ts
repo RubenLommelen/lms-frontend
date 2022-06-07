@@ -37,6 +37,7 @@ export class CodelabOverviewComponent implements OnInit {
       codelabs => {
         codelabs.forEach(codelab => codelab.studentId = this.loginService.getId());
         codelabs.forEach(codelab => this.codelabs.push(this.fb.group(codelab)))
+        codelabs.forEach(codelab => console.log(codelab.codelabCompleted))
       }
     );
     this.userType = this.loginService.getUserType();

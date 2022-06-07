@@ -9,6 +9,7 @@
             <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
               <div class="row">
                 <span class="col-5">{{codelab.value.codelabName}}</span>
+                <span class="col-5">{{codelab.value.codelabCompleted}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>

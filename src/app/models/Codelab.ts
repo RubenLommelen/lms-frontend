@@ -6,5 +6,5 @@ export interface Codelab {
   codelabId: number;
   studentId: string | null;
   codelabComment: string;
-
+  codelabCompleted: boolean;
 }
