@@ -68,9 +68,7 @@ export class CodelabOverviewComponent implements OnInit {
 
   myForm(codelabComment: string) {
     this.codelabCommentForm = this.fb.group({
-      codelabComment: codelabComment,
-      codelabId: this.codelabId,
-      studentId: this.loginService.getId()
+      codelabComment: codelabComment
     });
   }
 
@@ -97,15 +95,15 @@ export class CodelabOverviewComponent implements OnInit {
     }
   }
 
-
   saveComment() {
     this.codelabService.saveCodelabComment(this.codelabCommentForm.value, this.codelabId).subscribe({
       next: () => {
-        window.location.reload();
+        window.location.reload()
       },
       error: (error) => {
-
+        console.log(error);
       }
     });
   }
+
 }
