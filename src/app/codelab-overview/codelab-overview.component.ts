@@ -21,10 +21,11 @@ export class CodelabOverviewComponent implements OnInit {
   error: boolean = false;
   userType!: string | null;
   closeResult = '';
-  codelabName!: any;
-  codelabId!: any;
+  codelabName: any;
+  codelabId: any;
   codelabCommentForm!: FormGroup;
-  codelabComment!: any;
+  codelabComment: any;
+  codelabSolutionUrl: any;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
@@ -66,13 +67,14 @@ export class CodelabOverviewComponent implements OnInit {
     console.log(this.progressForm.value);
   }
 
-  myForm(codelabComment: string) {
+  myForm(codelabComment: string, codelabSolutionUrl: string) {
     this.codelabCommentForm = this.fb.group({
-      codelabComment: codelabComment
+      codelabComment: codelabComment,
+      codelabSolutionUrl: codelabSolutionUrl
     });
   }
 
-  open(content: any, codelabName: any, codelabId: any, codelabComment: any) {
+  open(content: any, codelabName: any, codelabId: any, codelabComment: any, codelabSolutionUrl: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -81,8 +83,9 @@ export class CodelabOverviewComponent implements OnInit {
     this.codelabName = codelabName;
     this.codelabId = codelabId;
     this.codelabComment = codelabComment;
+    this.codelabSolutionUrl = codelabSolutionUrl;
     console.log(codelabComment)
-    this.myForm(codelabComment);
+    this.myForm(codelabComment, codelabSolutionUrl);
   }
 
   private getDismissReason(reason: any): string {

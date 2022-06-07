@@ -14,7 +14,7 @@
                           [value]="progress">{{CodelabProgress[progress]}}</option>
                 </select>
                 <div class="col-1" style="margin-left: 20px; margin-right: 20px">
-                  <a class="col btn btn-comment" (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i class="bi bi-chat"></i></a>
+                  <a class="col btn btn-comment" (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment, codelab.value.codelabSolutionUrl)"><i class="bi bi-chat"></i></a>
                 </div>
               </div>
             </li>
@@ -54,6 +54,13 @@
           <textarea id="comment" class="form-control" formControlName="codelabComment"></textarea>
         </div>
       </div>
+
+    <div class="mb-3">
+      <label for="solution">Solution</label>
+      <div class="input-group">
+        <input id="solution" class="form-control" formControlName="codelabSolutionUrl" placeholder="https://github.com/my-codelab-solution"/>
+      </div>
+    </div>
 
   </div>
   <div class="modal-footer">
