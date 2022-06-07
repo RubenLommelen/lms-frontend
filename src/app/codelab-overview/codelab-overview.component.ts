@@ -4,6 +4,7 @@ import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -26,9 +27,10 @@ export class CodelabOverviewComponent implements OnInit {
   codelabCommentForm!: FormGroup;
   codelabComment: any;
   codelabSolutionUrl: any;
+  codelabCompleted!: boolean;
 
 
-  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
+  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal, private router: Router, private activatedRoute: ActivatedRoute) {
 
   }
 
@@ -41,6 +43,7 @@ export class CodelabOverviewComponent implements OnInit {
       }
     );
     this.userType = this.loginService.getUserType();
+
   }
 
   get codelabs(): FormArray {
@@ -55,7 +58,10 @@ export class CodelabOverviewComponent implements OnInit {
           setTimeout(() => {
             //code goes here
             this.message = false
-          }, 5000);
+            window.location.reload();
+
+          }, 1000);
+
         },
         error: () => {
           this.error = true;
@@ -63,6 +69,7 @@ export class CodelabOverviewComponent implements OnInit {
             //code goes here
             this.error = false
           }, 5000);
+
         }
       });
     console.log(this.progressForm.value);
@@ -75,7 +82,7 @@ export class CodelabOverviewComponent implements OnInit {
     });
   }
 
-  open(content: any, codelabName: any, codelabId: any, codelabComment: any, codelabSolutionUrl: any) {
+  open(content: any, codelabName: any, codelabId: any, codelabComment: any, codelabSolutionUrl: any, codelabCompleted: boolean) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -85,6 +92,7 @@ export class CodelabOverviewComponent implements OnInit {
     this.codelabId = codelabId;
     this.codelabComment = codelabComment;
     this.codelabSolutionUrl = codelabSolutionUrl;
+    this.codelabCompleted = codelabCompleted;
     console.log(codelabComment)
     this.myForm(codelabComment, codelabSolutionUrl);
   }
