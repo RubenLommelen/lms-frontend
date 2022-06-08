@@ -5,6 +5,7 @@ import {environment} from "../../../environments/environment";
 import {Codelab} from "../../models/Codelab";
 import {ProgressOverview} from "../../models/ProgressOverview";
 import {CodelabComment} from "../../models/CodelabComment";
+import {CodelabSolution} from "../../models/CodelabSolution";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class CodelabService {
 
   saveCodelabComment(codelabComment: CodelabComment, codelabId: number) {
     return this.http.post<CodelabComment>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabs/${codelabId}/comments`, codelabComment);
+  }
+
+  getCodelabSolutions(codelabId: number): Observable<CodelabSolution[]> {
+    return this.http.get<CodelabSolution[]>(`${environment.backendUrl}/codelabs/${codelabId}/solutions`)
   }
 }

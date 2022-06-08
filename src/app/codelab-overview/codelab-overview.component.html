@@ -7,20 +7,28 @@
         <div formArrayName="codelabs">
           <ul class="list-group list-group-flush">
             <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
-              <div class="row">
-                <span class="col-5">{{codelab.value.codelabName}}</span>
+              <div class="row d-flex">
+                <span class="col-4">{{codelab.value.codelabName}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>
                 </select>
-                <div class="col-1" style="margin-left: 20px; margin-right: 20px">
-                  <a class="col btn btn-comment" (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i class="bi bi-chat"></i></a>
+                <div class="col-2" style="margin-left: 20px; margin-right: 20px">
+                  <div class="row gap-3">
+                    <a class="btn btn-comment col"
+                       (click)="openComment(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i
+                      class="bi bi-chat"></i></a>
+                    <a class="btn btn-comment col"
+                       (click)="openSolutions(solutions, codelab.value.codelabId)"><i class="bi bi-github"></i></a>
+                  </div>
                 </div>
+
+
               </div>
             </li>
           </ul>
         </div>
-        <div class="pt-3 col offset-md-5">
+        <div class="pt-3 col offset-4">
           <button type="submit" class="btn btn-save col-auto ">Save</button>
           <br><br>
           <ngb-alert *ngIf="message">
@@ -46,7 +54,7 @@
   </div>
   <form [formGroup]="codelabCommentForm" (ngSubmit)="saveComment()">
 
-  <div class="modal-body">
+    <div class="modal-body">
 
       <div class="mb-3">
         <label for="comment">Comment</label>
@@ -55,10 +63,31 @@
         </div>
       </div>
 
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
   </form>
+</ng-template>
+
+<ng-template #solutions let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-solutions-title">{{codelabName}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="card-header">
+    test
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <div class="row">
+        <div class="col-3">Name</div>
+        <div class="col">LINK</div>
+      </div>
+    </li>
+
+    <div class="modal-footer"></div>
+  </ul>
+
 </ng-template>
 

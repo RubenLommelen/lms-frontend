@@ -4,6 +4,7 @@ import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {CodelabSolution} from "../models/CodelabSolution";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -25,6 +26,7 @@ export class CodelabOverviewComponent implements OnInit {
   codelabId!: any;
   codelabCommentForm!: FormGroup;
   codelabComment!: any;
+  codelabSolutions!: CodelabSolution[];
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
@@ -72,7 +74,7 @@ export class CodelabOverviewComponent implements OnInit {
     });
   }
 
-  open(content: any, codelabName: any, codelabId: any, codelabComment: any) {
+  openComment(content: any, codelabName: any, codelabId: any, codelabComment: any) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
@@ -81,8 +83,25 @@ export class CodelabOverviewComponent implements OnInit {
     this.codelabName = codelabName;
     this.codelabId = codelabId;
     this.codelabComment = codelabComment;
-    console.log(codelabComment)
     this.myForm(codelabComment);
+  }
+
+  openSolutions(content: any, codelabId: any,) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.codelabId = codelabId;
+    this.codelabService.getCodelabSolutions(this.codelabId).subscribe({
+      next: result => {
+        this.codelabSolutions = result;
+      },
+      error: () => {
+
+      }
+    })
+
   }
 
   private getDismissReason(reason: any): string {
