@@ -25,6 +25,8 @@ export class CodelabOverviewComponent implements OnInit {
   codelabId!: any;
   codelabCommentForm!: FormGroup;
   codelabComment!: any;
+  searchText = '';
+
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
