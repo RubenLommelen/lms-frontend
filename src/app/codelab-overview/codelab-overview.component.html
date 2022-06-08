@@ -7,9 +7,10 @@
         <div formArrayName="codelabs">
           <ul class="list-group list-group-flush">
 
-            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'" class="list-group-item" [formGroup]="codelab">
+            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'"
+                class="list-group-item" [formGroup]="codelab">
               <div class="row">
-                <span class="col-5" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
+                <span class="col-4" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>
@@ -17,10 +18,11 @@
                 <div class="col-2" style="margin-left: 20px; margin-right: 20px">
                   <div class="row gap-3">
                     <a class="btn btn-comment col"
-                       (click)="openComment(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i
+                       (click)="openComment(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment, codelab.value.codelabSolutionUrl, codelab.value.codelabCompleted)"><i
                       class="bi bi-chat"></i></a>
                     <a class="btn btn-solutions col"
-                       (click)="openSolutions(solutions, codelab.value.codelabName, codelab.value.codelabId)"><i class="bi bi-github"></i></a>
+                       (click)="openSolutions(solutions, codelab.value.codelabName, codelab.value.codelabId)"><i
+                      class="bi bi-github"></i></a>
                   </div>
                 </div>
               </div>
@@ -53,7 +55,7 @@
   </div>
   <form [formGroup]="codelabCommentForm" (ngSubmit)="saveComment()">
 
-  <div class="modal-body">
+    <div class="modal-body">
       <div class="mb-3">
         <label for="comment">Comment</label>
         <div class="input-group">
@@ -61,12 +63,13 @@
         </div>
       </div>
 
-    <div class="mb-3" *ngIf="codelabCompleted">
-      <label for="solution">Solution</label>
-      <div class="input-group" >
-        <input id="solution" class="form-control" formControlName="codelabSolutionUrl" placeholder="https://github.com/my-codelab-solution"/>
+      <div class="mb-3" *ngIf="codelabCompleted">
+        <label for="solution">Solution</label>
+        <div class="input-group">
+          <input id="solution" class="form-control" formControlName="codelabSolutionUrl"
+                 placeholder="https://github.com/my-codelab-solution"/>
+        </div>
       </div>
-    </div>
 
     </div>
     <div class="modal-footer">
@@ -80,18 +83,19 @@
     <h4 class="modal-title" id="modal-solutions-title">{{codelabName}}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
-  <div class="card-header">Student solutions</div>
+  <div class="card-header">Students solutions</div>
   <ul class="list-group list-group-flush">
     <li *ngFor="let solution of codelabSolutions" class="list-group-item">
       <div class="row">
-        <a href="{{solution.solutionUrl}}" title="{{solution.solutionUrl}}" class="col text-center" target="_blank">{{solution.studentDisplayName}}</a>
+        <a href="{{solution.solutionUrl}}" title="{{solution.solutionUrl}}" class="col text-center solutions-btn"
+           target="_blank">{{solution.studentDisplayName}}</a>
       </div>
-      <div *ngIf="!hasSolutions" class="row">
-        <p class="col text-center">No solutions yet for this codelab.</p>
-      </div>
+    </li>
+    <li *ngIf="!hasSolutions" class="row">
+      <p class="col text-center" style="margin-top: 15px">No solutions yet for this codelab.</p>
     </li>
   </ul>
 
-    <div class="modal-footer"></div>
+  <div class="modal-footer"></div>
 </ng-template>
 

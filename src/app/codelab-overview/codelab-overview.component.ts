@@ -5,7 +5,6 @@ import {CodelabProgress} from "../models/CodelabProgress";
 import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
 import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {CodelabSolution} from "../models/CodelabSolution";
-import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -34,7 +33,7 @@ export class CodelabOverviewComponent implements OnInit {
   codelabCompleted!: boolean;
 
 
-  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal, private router: Router, private activatedRoute: ActivatedRoute) {
+  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
 
   }
 
@@ -83,7 +82,7 @@ export class CodelabOverviewComponent implements OnInit {
     });
   }
 
-  open(content: any, codelabName: any, codelabId: any, codelabComment: any, codelabSolutionUrl: any, codelabCompleted: boolean) {
+  openComment(content: any, codelabName: any, codelabId: any, codelabComment: any, codelabSolutionUrl: any, codelabCompleted: boolean) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
