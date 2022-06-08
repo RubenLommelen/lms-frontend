@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ConfirmedValidator} from "../validators/confirmed.validator";
 import {RegisterService} from "../services/register/register.service";
 import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-register',
@@ -13,8 +14,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   registerForm!: FormGroup;
   registerSubscription!: Subscription;
+  emailUnique: boolean = true;
 
-  constructor(private formBuilder: FormBuilder, private registerService: RegisterService) {
+  constructor(private formBuilder: FormBuilder, private registerService: RegisterService, private router: Router) {
   }
 
 
@@ -35,8 +37,16 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
 
   onSubmit() {
-    if (this.registerForm.valid) {
-      this.registerSubscription = this.registerService.registerStudent(this.registerForm.value).subscribe();
+    this.emailUnique = true;
+    if (this.registerForm.valid && this.emailUnique) {
+      this.registerSubscription = this.registerService.registerStudent(this.registerForm.value).subscribe(
+        e => {
+          this.emailUnique = e.emailUnique;
+          if (this.emailUnique) {
+            this.router.navigate(['login'], {queryParams: { registered: 'true' } }); //added this
+          }
+        }
+      );
     }
   }
 

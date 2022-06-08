@@ -13,5 +13,5 @@
   </form>
   <button (click)="onRegister()" class="btn btn-secondary form-control">Register</button>
 
-
+  <ngb-alert *ngIf="infoMessage.length > 0" class="alert">{{ infoMessage }}</ngb-alert>
 </div>

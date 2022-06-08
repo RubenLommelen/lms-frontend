@@ -12,29 +12,36 @@
     <label class="form-label">Repeat Password</label>
     <input class="form-control" type="password" formControlName="repeatPassword" placeholder="****">
     <button *ngIf="this.registerForm.valid" type="submit" class="btn btn-secondary form-control">Register</button>
-    <button *ngIf="this.registerForm.invalid" type="button" class="btn btn-secondary form-control" disabled>Register</button>
+    <button *ngIf="this.registerForm.invalid" type="button" class="btn btn-secondary form-control" disabled>Register
+    </button>
   </form>
-
 
 
   <div class="alert alert-warning" *ngIf="registerForm.invalid && (registerForm.dirty || registerForm.touched)">
     <ul>
-      <li *ngIf="email.errors?.['required'] || displayName.errors?.['required'] || password.errors?.['required'] || repeatPassword.errors?.['required']">
-          All field are required
+      <li
+        *ngIf="email.errors?.['required'] || displayName.errors?.['required'] || password.errors?.['required'] || repeatPassword.errors?.['required']">
+        All field are required
       </li>
       <li *ngIf="email.errors?.['email']">
         Please enter a valid email format
       </li>
       <li *ngIf="password.errors?.['pattern']">
-          The password should be in the following format: minimum 8 characters, at least 1 number, 1 special character,
-          1
-          uppercase letter, 1 lowercase letter
+        The password should be in the following format: minimum 8 characters, at least 1 number, 1 special character,
+        1
+        uppercase letter, 1 lowercase letter
       </li>
       <li *ngIf="repeatPassword.errors?.['confirmedValidator']">
-          Passwords have to match
+        Passwords have to match
       </li>
     </ul>
   </div>
-
+  <div class="alert alert-warning" [(ngModel)]="emailUnique" *ngIf="!emailUnique">
+    <ul>
+      <li>
+        Email already exists
+      </li>
+    </ul>
+  </div>
 
 </div>
