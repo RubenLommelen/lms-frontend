@@ -1,20 +1,30 @@
+
 <div *ngIf="userType == 'STUDENT'">
   <div class="container-sm">
     <div class="card col-6 offset-3">
       <span class="card-header text-center">Codelabs overview</span>
+      <div class="form-group row offset-5" style="margin-top: 5px; margin-bottom: 5px">
+        <label class="col col-3" style="margin-top: 7px">Search:</label>
+        <div class="col-8">
+          <input class="form-control" placeholder="Filter by progress ..." [(ngModel)]="searchText">
+        </div>
+      </div>
 
       <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
         <div formArrayName="codelabs">
           <ul class="list-group list-group-flush">
-            <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
+
+            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'" class="list-group-item" [formGroup]="codelab">
               <div class="row">
-                <span class="col-5">{{codelab.value.codelabName}}</span>
+                <span class="col-5" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>
                 </select>
                 <div class="col-1" style="margin-left: 20px; margin-right: 20px">
-                  <a class="col btn btn-comment" (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment, codelab.value.codelabSolutionUrl, codelab.value.codelabCompleted)"><i class="bi bi-chat"></i></a>
+                  <a class="col btn btn-comment"
+                     (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i
+                    class="bi bi-chat"></i></a>
                 </div>
               </div>
             </li>
@@ -23,9 +33,6 @@
         <div class="pt-3 col offset-md-5">
           <button type="submit" class="btn btn-save col-auto ">Save</button>
           <br><br>
-
-
-
           <ngb-alert *ngIf="message">
             Progress saved successfully!
           </ngb-alert>
@@ -64,10 +71,10 @@
       </div>
     </div>
 
-  </div>
-  <div class="modal-footer">
-    <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
-  </div>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
   </form>
 </ng-template>
 

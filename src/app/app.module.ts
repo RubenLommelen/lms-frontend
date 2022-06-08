@@ -7,13 +7,14 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {LayoutModule} from "./layout/layout.module";
 import {CodelabOverviewComponent} from './codelab-overview/codelab-overview.component';
 import {LoginComponent} from './login/login.component';
-import {EmailValidator, FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { HomePageComponent } from './home-page/home-page.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
-import { RegisterComponent } from './register/register.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {ProfileComponent} from './profile/profile.component';
+import {ProgressionOverviewComponent} from './progression-overview/progression-overview.component';
+import {RegisterComponent} from './register/register.component';
 import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.interceptor";
+import {CodelabFilterPipe} from './pipes/codelab-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.inter
     HomePageComponent,
     ProfileComponent,
     ProgressionOverviewComponent,
-    RegisterComponent
+    RegisterComponent,
+    CodelabFilterPipe
   ],
   imports: [
     BrowserModule,

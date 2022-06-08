@@ -25,7 +25,8 @@ export class CodelabOverviewComponent implements OnInit {
   codelabName: any;
   codelabId: any;
   codelabCommentForm!: FormGroup;
-  codelabComment: any;
+  codelabComment!: any;
+  searchText = '';
   codelabSolutionUrl: any;
   codelabCompleted!: boolean;
 
@@ -39,11 +40,9 @@ export class CodelabOverviewComponent implements OnInit {
       codelabs => {
         codelabs.forEach(codelab => codelab.studentId = this.loginService.getId());
         codelabs.forEach(codelab => this.codelabs.push(this.fb.group(codelab)))
-        codelabs.forEach(codelab => console.log(codelab.codelabCompleted))
       }
     );
     this.userType = this.loginService.getUserType();
-
   }
 
   get codelabs(): FormArray {
@@ -69,7 +68,6 @@ export class CodelabOverviewComponent implements OnInit {
             //code goes here
             this.error = false
           }, 5000);
-
         }
       });
     console.log(this.progressForm.value);
