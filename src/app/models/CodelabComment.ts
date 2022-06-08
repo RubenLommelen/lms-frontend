@@ -1,3 +1,4 @@
 export interface CodelabComment {
-  codelabComment: string
+  codelabComment: string,
+  codelabSolutionUrl: string,
 }

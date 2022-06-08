@@ -6,9 +6,10 @@
       <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
         <div formArrayName="codelabs">
           <ul class="list-group list-group-flush">
-            <li *ngFor="let codelab of codelabs.controls" class="list-group-item" [formGroup]="codelab">
-              <div class="row d-flex">
-                <span class="col-4">{{codelab.value.codelabName}}</span>
+
+            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'" class="list-group-item" [formGroup]="codelab">
+              <div class="row">
+                <span class="col-5" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>
@@ -22,8 +23,6 @@
                        (click)="openSolutions(solutions, codelab.value.codelabName, codelab.value.codelabId)"><i class="bi bi-github"></i></a>
                   </div>
                 </div>
-
-
               </div>
             </li>
           </ul>
@@ -54,14 +53,20 @@
   </div>
   <form [formGroup]="codelabCommentForm" (ngSubmit)="saveComment()">
 
-    <div class="modal-body">
-
+  <div class="modal-body">
       <div class="mb-3">
         <label for="comment">Comment</label>
         <div class="input-group">
           <textarea id="comment" class="form-control" formControlName="codelabComment"></textarea>
         </div>
       </div>
+
+    <div class="mb-3" *ngIf="codelabCompleted">
+      <label for="solution">Solution</label>
+      <div class="input-group" >
+        <input id="solution" class="form-control" formControlName="codelabSolutionUrl" placeholder="https://github.com/my-codelab-solution"/>
+      </div>
+    </div>
 
     </div>
     <div class="modal-footer">
