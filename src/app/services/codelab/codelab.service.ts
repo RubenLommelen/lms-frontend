@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {Codelab} from "../../models/Codelab";
 import {ProgressOverview} from "../../models/ProgressOverview";
+import {CodelabComment} from "../../models/CodelabComment";
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +23,9 @@ export class CodelabService {
 
   getProgressOverview(): Observable<ProgressOverview[]> {
     return this.http.get<ProgressOverview[]>(`${environment.backendUrl}/progress`);
+  }
+
+  saveCodelabComment(codelabComment: CodelabComment, codelabId: number) {
+    return this.http.post<CodelabComment>(`${environment.backendUrl}/students/${window.sessionStorage.getItem('id')}/codelabs/${codelabId}/comments`, codelabComment);
   }
 }

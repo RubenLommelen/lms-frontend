@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {CodelabService} from "../services/codelab/codelab.service";
 import {LoginService} from "../services/login/login.service";
 import {CodelabProgress} from "../models/CodelabProgress";
-import {FormArray, FormBuilder} from "@angular/forms";
+import {FormArray, FormBuilder, FormGroup} from "@angular/forms";
+import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
   selector: 'app-codelab-overview',
@@ -19,9 +20,15 @@ export class CodelabOverviewComponent implements OnInit {
   message: boolean = false;
   error: boolean = false;
   userType!: string | null;
+  closeResult = '';
+  codelabName!: any;
+  codelabId!: any;
+  codelabCommentForm!: FormGroup;
+  codelabComment!: any;
 
 
-  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder) {
+  constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
+
   }
 
   ngOnInit(): void {
@@ -57,8 +64,45 @@ export class CodelabOverviewComponent implements OnInit {
         }
       });
     console.log(this.progressForm.value);
-
   }
 
+  myForm(codelabComment: string) {
+    this.codelabCommentForm = this.fb.group({
+      codelabComment: codelabComment
+    });
+  }
 
+  open(content: any, codelabName: any, codelabId: any, codelabComment: any) {
+    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+      this.closeResult = `Closed with: ${result}`;
+    }, (reason) => {
+      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+    });
+    this.codelabName = codelabName;
+    this.codelabId = codelabId;
+    this.codelabComment = codelabComment;
+    console.log(codelabComment)
+    this.myForm(codelabComment);
+  }
+
+  private getDismissReason(reason: any): string {
+    if (reason === ModalDismissReasons.ESC) {
+      return 'by pressing ESC';
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+      return 'by clicking on a backdrop';
+    } else {
+      return `with: ${reason}`;
+    }
+  }
+
+  saveComment() {
+    this.codelabService.saveCodelabComment(this.codelabCommentForm.value, this.codelabId).subscribe({
+      next: () => {
+        window.location.reload()
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    });
+  }
 }

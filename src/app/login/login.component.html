@@ -11,7 +11,7 @@
     <label *ngIf="hasError" class="text-warning">Invalid credentials</label>
     <button type="submit" class="btn btn-success form-control">Login</button>
   </form>
-  <button (click)="onRegister()" class="btn btn-secondary form-control">Register</button>
+  <button (click)="onRegister()" class="btn btn-secondary form-control" hidden>Register</button>
 
   <ngb-alert *ngIf="infoMessage.length > 0" class="alert">{{ infoMessage }}</ngb-alert>
 </div>
