@@ -86,12 +86,13 @@ export class CodelabOverviewComponent implements OnInit {
     this.myForm(codelabComment);
   }
 
-  openSolutions(content: any, codelabId: any,) {
+  openSolutions(content: any, codelabName: any, codelabId: any,) {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
+    this.codelabName = codelabName;
     this.codelabId = codelabId;
     this.codelabService.getCodelabSolutions(this.codelabId).subscribe({
       next: result => {

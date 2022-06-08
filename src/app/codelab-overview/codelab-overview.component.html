@@ -18,8 +18,8 @@
                     <a class="btn btn-comment col"
                        (click)="openComment(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i
                       class="bi bi-chat"></i></a>
-                    <a class="btn btn-comment col"
-                       (click)="openSolutions(solutions, codelab.value.codelabId)"><i class="bi bi-github"></i></a>
+                    <a class="btn btn-solutions col"
+                       (click)="openSolutions(solutions, codelab.value.codelabName, codelab.value.codelabId)"><i class="bi bi-github"></i></a>
                   </div>
                 </div>
 
@@ -75,14 +75,11 @@
     <h4 class="modal-title" id="modal-solutions-title">{{codelabName}}</h4>
     <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
   </div>
-  <div class="card-header">
-    test
-  </div>
+  <div class="card-header">Student solutions</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">
+    <li *ngFor="let solution of codelabSolutions" class="list-group-item">
       <div class="row">
-        <div class="col-3">Name</div>
-        <div class="col">LINK</div>
+        <a href="{{solution.solutionUrl}}" class="col" target="_blank">{{solution.studentDisplayName}}</a>
       </div>
     </li>
 
