@@ -79,12 +79,14 @@
   <ul class="list-group list-group-flush">
     <li *ngFor="let solution of codelabSolutions" class="list-group-item">
       <div class="row">
-        <a href="{{solution.solutionUrl}}" class="col" target="_blank">{{solution.studentDisplayName}}</a>
+        <a href="{{solution.solutionUrl}}" title="{{solution.solutionUrl}}" class="col text-center" target="_blank">{{solution.studentDisplayName}}</a>
+      </div>
+      <div *ngIf="!hasSolutions" class="row">
+        <p class="col text-center">No solutions yet for this codelab.</p>
       </div>
     </li>
-
-    <div class="modal-footer"></div>
   </ul>
 
+    <div class="modal-footer"></div>
 </ng-template>
 

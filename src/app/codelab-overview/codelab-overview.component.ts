@@ -27,6 +27,7 @@ export class CodelabOverviewComponent implements OnInit {
   codelabCommentForm!: FormGroup;
   codelabComment!: any;
   codelabSolutions!: CodelabSolution[];
+  hasSolutions!: boolean;
 
 
   constructor(private codelabService: CodelabService, private loginService: LoginService, private fb: FormBuilder, private modalService: NgbModal) {
@@ -87,16 +88,18 @@ export class CodelabOverviewComponent implements OnInit {
   }
 
   openSolutions(content: any, codelabName: any, codelabId: any,) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-    });
+
     this.codelabName = codelabName;
     this.codelabId = codelabId;
     this.codelabService.getCodelabSolutions(this.codelabId).subscribe({
       next: result => {
+        if (result.length > 0) {this.hasSolutions = true;}
         this.codelabSolutions = result;
+        this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+          this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
       },
       error: () => {
 

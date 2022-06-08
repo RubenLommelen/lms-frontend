@@ -19,5 +19,9 @@
 .btn-save{
   background: #424348;
   color:white;
+}
 
+a {
+  text-decoration: none;
+  color: black;
 }
