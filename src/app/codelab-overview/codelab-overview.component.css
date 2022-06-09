@@ -27,7 +27,7 @@
   color:white;
 }
 
-}
+
 
 .btn-save:hover {
   background: white;
@@ -38,6 +38,7 @@
 .alert-custom-success {
   background: #00ab9e;
   color: white;
+}
 .solutions-btn:hover {
   background: lightgray;
 }
