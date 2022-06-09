@@ -15,6 +15,7 @@ import { ProgressionOverviewComponent } from './progression-overview/progression
 import { RegisterComponent } from './register/register.component';
 import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.interceptor";
 import {CodelabFilterPipe} from './pipes/codelab-filter.pipe';
+import { TimComponent } from './tim/tim.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {CodelabFilterPipe} from './pipes/codelab-filter.pipe';
     ProfileComponent,
     ProgressionOverviewComponent,
     RegisterComponent,
-    CodelabFilterPipe
+    CodelabFilterPipe,
+    TimComponent
   ],
   imports: [
     BrowserModule,
