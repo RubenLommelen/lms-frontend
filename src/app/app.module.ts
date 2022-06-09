@@ -9,13 +9,12 @@ import {CodelabOverviewComponent} from './codelab-overview/codelab-overview.comp
 import {LoginComponent} from './login/login.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import { HomePageComponent } from './home-page/home-page.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ProgressionOverviewComponent } from './progression-overview/progression-overview.component';
-import { RegisterComponent } from './register/register.component';
+import {HomePageComponent} from './home-page/home-page.component';
+import {ProfileComponent} from './profile/profile.component';
+import {ProgressionOverviewComponent} from './progression-overview/progression-overview.component';
+import {RegisterComponent} from './register/register.component';
 import {HttpinterceptorInterceptor} from "./services/login/httpinterceptor.interceptor";
 import {CodelabFilterPipe} from './pipes/codelab-filter.pipe';
-import { TimComponent } from './tim/tim.component';
 
 @NgModule({
   declarations: [
@@ -26,8 +25,7 @@ import { TimComponent } from './tim/tim.component';
     ProfileComponent,
     ProgressionOverviewComponent,
     RegisterComponent,
-    CodelabFilterPipe,
-    TimComponent
+    CodelabFilterPipe
   ],
   imports: [
     BrowserModule,

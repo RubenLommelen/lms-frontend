@@ -6,7 +6,6 @@ import {CodelabOverviewComponent} from "./codelab-overview/codelab-overview.comp
 import {ProfileComponent} from "./profile/profile.component";
 import {ProgressionOverviewComponent} from "./progression-overview/progression-overview.component";
 import {RegisterComponent} from "./register/register.component";
-import {TimComponent} from "./tim/tim.component";
 
 const routes: Routes = [
   {path:'login', component:LoginComponent},
@@ -14,8 +13,7 @@ const routes: Routes = [
   {path:'profile', component:ProfileComponent},
   {path:'', component:HomePageComponent},
   {path:'progression', component:ProgressionOverviewComponent},
-  {path:'register', component:RegisterComponent},
-  {path:'tim', component:TimComponent}
+  {path:'register', component:RegisterComponent}
 ];
 
 @NgModule({
