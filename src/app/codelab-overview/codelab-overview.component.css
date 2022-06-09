@@ -22,6 +22,12 @@
   color: white;
 }
 
+.btn-solutions:hover{
+  background: white;
+  color: grey;
+  border-color: grey;
+}
+
 .btn-save{
   background: #424348;
   color:white;
