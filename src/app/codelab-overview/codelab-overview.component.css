@@ -11,8 +11,25 @@
   color: white;
 }
 
+.btn-comment:hover{
+  background: white;
+  color: #00ab9e;
+  border-color: #00ab9e;
+}
+
 .btn-save{
   background: #424348;
   color:white;
 
+}
+
+.btn-save:hover {
+  background: white;
+  color: #424348;
+  border-color: #424348;
+}
+
+.alert-custom-success {
+  background: #00ab9e;
+  color: white;
 }

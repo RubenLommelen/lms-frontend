@@ -33,13 +33,13 @@
         <div class="pt-3 col offset-md-5">
           <button type="submit" class="btn btn-save col-auto ">Save</button>
           <br><br>
-          <ngb-alert *ngIf="message">
-            Progress saved successfully!
-          </ngb-alert>
-          <ngb-alert type="danger" *ngIf="error">
-            Failed to save progress!!
-          </ngb-alert>
         </div>
+        <ngb-alert class="alert-custom-success col-5 offset-5" *ngIf="message">
+          Progress saved successfully!
+        </ngb-alert>
+        <ngb-alert type="danger col-5 offset-5" *ngIf="error">
+          Failed to save progress!!
+        </ngb-alert>
       </form>
     </div>
   </div>
@@ -67,7 +67,7 @@
 
     </div>
     <div class="modal-footer">
-      <button type="submit" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+      <button type="submit" class="btn btn-save" (click)="modal.close('Save click')">Save</button>
     </div>
   </form>
 </ng-template>
