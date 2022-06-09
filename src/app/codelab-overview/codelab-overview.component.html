@@ -2,6 +2,12 @@
   <div class="container-sm">
     <div class="card col-6 offset-3">
       <span class="card-header text-center">Codelabs overview</span>
+      <div class="form-group row offset-5" style="margin-top: 5px; margin-bottom: 5px">
+        <label class="col col-3" style="margin-top: 7px">Search:</label>
+        <div class="col-8">
+          <input class="form-control" placeholder="Filter by progress ..." [(ngModel)]="searchText">
+        </div>
+      </div>
 
       <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
         <div formArrayName="codelabs">
