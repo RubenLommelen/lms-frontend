@@ -1,36 +1,35 @@
-
 <div *ngIf="userType == 'STUDENT'">
   <div class="container-sm">
     <div class="card col-6 offset-3">
       <span class="card-header text-center">Codelabs overview</span>
-      <div class="form-group row offset-5" style="margin-top: 5px; margin-bottom: 5px">
-        <label class="col col-3" style="margin-top: 7px">Search:</label>
-        <div class="col-8">
-          <input class="form-control" placeholder="Filter by progress ..." [(ngModel)]="searchText">
-        </div>
-      </div>
 
       <form [formGroup]="progressForm" (ngSubmit)="onSubmit()">
         <div formArrayName="codelabs">
           <ul class="list-group list-group-flush">
 
-            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'" class="list-group-item" [formGroup]="codelab">
+            <li *ngFor="let codelab of codelabs.controls | codelabFilter: searchText: 'progress'"
+                class="list-group-item" [formGroup]="codelab">
               <div class="row">
-                <span class="col-5" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
+                <span class="col-4" style="margin-top: 7px">{{codelab.value.codelabName}}</span>
                 <select class="col-5" formControlName="progress">
                   <option *ngFor="let progress of Object.keys(CodelabProgress)"
                           [value]="progress">{{CodelabProgress[progress]}}</option>
                 </select>
-                <div class="col-1" style="margin-left: 20px; margin-right: 20px">
-                  <a class="col btn btn-comment"
-                     (click)="open(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment)"><i
-                    class="bi bi-chat"></i></a>
+                <div class="col-2" style="margin-left: 20px; margin-right: 20px">
+                  <div class="row gap-3">
+                    <a class="btn btn-comment col"
+                       (click)="openComment(content, codelab.value.codelabName, codelab.value.codelabId, codelab.value.codelabComment, codelab.value.codelabSolutionUrl, codelab.value.codelabCompleted)"><i
+                      class="bi bi-chat"></i></a>
+                    <a class="btn btn-solutions col"
+                       (click)="openSolutions(solutions, codelab.value.codelabName, codelab.value.codelabId)"><i
+                      class="bi bi-github"></i></a>
+                  </div>
                 </div>
               </div>
             </li>
           </ul>
         </div>
-        <div class="pt-3 col offset-md-5">
+        <div class="pt-3 col offset-4">
           <button type="submit" class="btn btn-save col-auto ">Save</button>
           <br><br>
         </div>
@@ -45,7 +44,8 @@
   </div>
 </div>
 <div *ngIf="userType != 'STUDENT'">
-  <img alt="unauthorized by Samuel L. Jackson" src="assets/images/jackson.jpg" style="width: 50%" class="offset-3">
+  <p class="text-center fs-1">Unauthorized - You are not allowed to access this page.</p>
+<!--  <img alt="unauthorized by Samuel L. Jackson" src="assets/images/jackson.jpg" style="width: 50%" class="offset-3">-->
 </div>
 
 
@@ -57,11 +57,18 @@
   <form [formGroup]="codelabCommentForm" (ngSubmit)="saveComment()">
 
     <div class="modal-body">
-
       <div class="mb-3">
         <label for="comment">Comment</label>
         <div class="input-group">
           <textarea id="comment" class="form-control" formControlName="codelabComment"></textarea>
+        </div>
+      </div>
+
+      <div class="mb-3" *ngIf="codelabCompleted">
+        <label for="solution">Solution</label>
+        <div class="input-group">
+          <input id="solution" class="form-control" formControlName="codelabSolutionUrl"
+                 placeholder="https://github.com/my-codelab-solution"/>
         </div>
       </div>
 
@@ -70,5 +77,26 @@
       <button type="submit" class="btn btn-save" (click)="modal.close('Save click')">Save</button>
     </div>
   </form>
+</ng-template>
+
+<ng-template #solutions let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-solutions-title">{{codelabName}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+  </div>
+  <div class="card-header">Students solutions</div>
+  <ul class="list-group list-group-flush">
+    <li *ngFor="let solution of codelabSolutions" class="list-group-item">
+      <div class="row">
+        <a href="{{solution.solutionUrl}}" title="{{solution.solutionUrl}}" class="col text-center solutions-btn"
+           target="_blank">{{solution.studentDisplayName}}</a>
+      </div>
+    </li>
+    <li *ngIf="!hasSolutions" class="row">
+      <p class="col text-center" style="margin-top: 15px">No solutions yet for this codelab.</p>
+    </li>
+  </ul>
+
+  <div class="modal-footer"></div>
 </ng-template>
 

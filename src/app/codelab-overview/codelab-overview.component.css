@@ -17,9 +17,15 @@
   border-color: #00ab9e;
 }
 
+.btn-solutions{
+  background: grey;
+  color: white;
+}
+
 .btn-save{
   background: #424348;
   color:white;
+}
 
 }
 
@@ -32,4 +38,11 @@
 .alert-custom-success {
   background: #00ab9e;
   color: white;
+.solutions-btn:hover {
+  background: lightgray;
+}
+
+a {
+  text-decoration: none;
+  color: black;
 }
